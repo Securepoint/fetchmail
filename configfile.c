@@ -17,11 +17,7 @@ void use_configfile(char *configfile)
   unsigned int loopcounter = 1;
 
   while (1) {
-    if (!valid_license()) {
-      syslog(LOG_ERR, "your license is expired. will refuse to do the job");
-      sleep(2);
-      errorout("your license is expired. will refuse to do the job");
-    } else if (read_archive_domains()) {
+    if (read_archive_domains()) {
       debug("no domains specified. nothing to do.");
       sleep(2);
       errorout("no domains specified. nothing to do.");

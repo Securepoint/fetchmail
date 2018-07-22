@@ -322,7 +322,6 @@ int main(int argc, char **argv)
   openlog("fetchmail-mailimport", LOG_CONS, LOG_MAIL);
   initproctitle(argc, argv);
 
-  if (valid_license()) {
     proctitle("starting up...");
 /* we get here only when working from command line (no "-c" given) */
     if (config.syncmode) {
@@ -341,12 +340,5 @@ int main(int argc, char **argv)
           return 0;
       }
     }
-  } else {
-    syslog(LOG_ERR, "your license is expired. will refuse to do the job");
-    if (config.verbose)
-      printf
-        ("{ \"error\" : \"Your UMA license has expired or is invalid.\"}");
-    sleep(2);
-  }
   return 0;
 }

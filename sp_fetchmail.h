@@ -102,7 +102,6 @@ int forkandwrite_dovecotlda(char *data, size_t datalen, const char *destuser,
 int forkandwrite_extprogram(char *const argv[], char *data, size_t len);
 void free_config(void);
 void check_cachedir(void);
-int valid_license(void);
 void debug_real(const char *func, const char *format, ...);
 void errorout(const char *output);
 void fetchmailsighandler(int sig);

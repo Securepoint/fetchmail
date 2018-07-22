@@ -18,7 +18,7 @@ CFLAGS  ?= -Os -g -W -Wall
 BUILDDIR = .
 
 INSTALL ?= install
-LIBS = -lspcommon-util -lspcommon-mime -lspcommon-mailstorage -lspcommon-mailid -lspcommon-web -lspuma-common-license -letpan -lresolv
+LIBS = -lspcommon-util -lspcommon-mime -lspcommon-mailstorage -lspcommon-mailid -lspcommon-web -letpan -lresolv
 
 OBJ = $(BUILDDIR)/helper_functions.o
 OBJ += $(BUILDDIR)/syncmode.o

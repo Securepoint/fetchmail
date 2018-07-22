@@ -1,7 +1,6 @@
 #include "sp_fetchmail.h"
 #include <libspcommon/openreadclose.h>
 #include <libspcommon/sp_filefuncs.h>
-#include <libspuma-common/spuma-license.h>
 
 #include <errno.h>
 #include <stdarg.h>
@@ -265,7 +264,7 @@ int deliver_lmtp(char *data, size_t datalen,
     }
     if ((ret = mailesmtp_rcpt(lmtp_storage, recipient, 0, NULL))) {
       if (MAILSMTP_ERROR_MAILBOX_UNAVAILABLE == ret) {
-        syslog(LOG_INFO, "recipient %s not available, or denied by license",
+        syslog(LOG_INFO, "recipient %s not available",
           recipient);
         ret = 0;
       } else if (MAILSMTP_ERROR_IN_PROCESSING == ret) {
@@ -528,24 +527,6 @@ int append_folderlist(clist * folderlist)
   return 0;
 }
 
-int valid_license()
-{
-
-  size_t errmsg_len = 256;
-  char errmsg[errmsg_len];
-  int days_left;
-  time_t expire_time;
-  char *license_addr = NULL;
-  int account_limit;
-  int err;
-
-  err =
-    spumacommon_license_check(errmsg, errmsg_len, &days_left, &expire_time,
-    &license_addr, &account_limit);
-  if (SPUMACOMMON_LICENSE_ACCEPT == err)
-    return 1;
-  return 0;
-}
 
 int clist_free_withcontent(clist * list)
 {
